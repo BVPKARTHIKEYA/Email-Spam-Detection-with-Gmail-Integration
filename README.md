@@ -297,7 +297,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 **Karthikeya Boddeda**
 
 - 📧 Email: sunny.penny041@gmail.com
-- 💻 GitHub: [@yourusername](https://github.com/BVPKARTHIKEYA)
+- 💻 GitHub: [@BVPKARTHIKEYA](https://github.com/BVPKARTHIKEYA)
 
 ---
 
