@@ -1,254 +1,337 @@
 # Gmail Spam Guard Pro 📧
 
-A machine learning project for advanced email spam detection, integrating natural language processing techniques and Gmail API. Gmail Spam Guard Pro can preprocess large volumes of email, train robust models, and classify messages automatically, making your inbox safer and cleaner. It's fully compatible with Gmail using Google's official API, all in Python.
+<div align="center">
 
-📋 Table of Contents
-- Features
-- Project Structure
-- Technologies Used
-- Installation
-- Configuration
-- Usage
-- Model Training
-- Contributing
-- License
-- Author
-- Acknowledgments
+**Advanced ML-powered email spam detection with Gmail API integration**
 
-✨ Features
-- ML-Based Spam Detection: Classifies emails as spam or not spam with high accuracy
-- Gmail API Integration: Fetch and classify live Gmail messages
-- Easy Setup: Fast configuration for any user with Google API credentials
-- End-to-End Pipeline: Preprocessing, model training, and inference included
-- Flexible ML Support: Compatible with both classic ML (Naive Bayes, SVM) and deep learning (LSTM, CNN)
-- Data Security: Never uploads your emails; operates locally after API access
-- Extensible: Easily add features, change models, or expand datasets
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)](https://www.tensorflow.org/)
+[![Gmail API](https://img.shields.io/badge/Gmail-API-red.svg)](https://developers.google.com/gmail/api)
 
-📁 Project Structure
+</div>
+
+---
+
+## 📖 Overview
+
+Gmail Spam Guard Pro is a machine learning project that brings advanced spam detection to your Gmail inbox. Using natural language processing and the official Gmail API, it preprocesses emails, trains robust models, and automatically classifies messages—keeping your inbox safe and organized. All processing happens locally in Python, ensuring your data stays private.
+
+## ✨ Features
+
+- 🤖 **ML-Based Detection** - High-accuracy spam classification using state-of-the-art algorithms
+- 📬 **Gmail Integration** - Seamless fetching and classification of live Gmail messages
+- ⚡ **Quick Setup** - Fast configuration with Google API credentials
+- 🔄 **Complete Pipeline** - End-to-end preprocessing, training, and inference
+- 🧠 **Flexible Models** - Support for classic ML (Naive Bayes, SVM) and deep learning (LSTM, CNN)
+- 🔒 **Privacy First** - All operations run locally; emails never leave your machine
+- 🔧 **Extensible** - Easy to customize models, features, and datasets
+
+## 🎬 Live Demo
+
+![Gmail Spam Guard Pro Demo](https://github.com/user-attachments/assets/d1464df9-d643-4002-8f1a-808ec0c9b708)
+
+---
+
+## 📁 Project Structure
+
+```
 Gmail-Spam-Guard-Pro/
-├── .venv/ # Python virtual environment
-├── pycache/ # Python cache files
-├── .idea/ # IDE configuration files
-├── venv/ # Alternate virtual environment
+├── .venv/                          # Python virtual environment
+├── __pycache__/                    # Python cache files
+├── .idea/                          # IDE configuration files
+├── venv/                           # Alternate virtual environment
 │
-├── credentials.json # Gmail API credentials
-├── token.json # OAuth2 token for Gmail
-├── tokenizer.json # Tokenizer configuration
+├── credentials.json                # Gmail API credentials (DO NOT COMMIT)
+├── token.json                      # OAuth2 token for Gmail (DO NOT COMMIT)
+├── tokenizer.json                  # Tokenizer configuration
 │
-├── Emails.csv # Gmail message dataset
-├── spamhamdata.csv # Labeled dataset for training
+├── Emails.csv                      # Gmail message dataset
+├── spamhamdata.csv                 # Labeled dataset for training
 │
-├── model.py # Model architecture definition
-├── train_model.py # Model training script
-├── spam_detector.py # Inference logic for spam detection
-├── predict_spam.py # CLI/script for running predictions
+├── model.py                        # Model architecture definition
+├── train_model.py                  # Model training script
+├── spam_detector.py                # Inference logic for spam detection
+├── predict_spam.py                 # CLI/script for running predictions
 │
-├── preprocess.py # Data/text preprocessing utilities
-├── preprocess_spam_data.py # Extra preprocessing for spam data
+├── preprocess.py                   # Data/text preprocessing utilities
+├── preprocess_spam_data.py         # Extra preprocessing for spam data
 │
-├── gmail_auth.py # Handles Gmail authentication (OAuth)
-├── read_gmail_and_detect_spam.py # Fetches and classifies Gmail messages
-├── generate_dataset.py # Tool to create/generate datasets
+├── gmail_auth.py                   # Handles Gmail authentication (OAuth)
+├── read_gmail_and_detect_spam.py   # Fetches and classifies Gmail messages
+├── generate_dataset.py             # Tool to create/generate datasets
 │
-├── spam_detector.h5 # Trained Keras deep learning model
-├── spam_model.pkl # Pickled ML model
-├── vectorizer.pkl # Persistence for vectorizer
-├── requirements.txt # Python dependency list
-├── Dockerfile # For running in Docker
-└── .gitignore # Ensures secrets are never committed
+├── spam_detector.h5                # Trained Keras deep learning model
+├── spam_model.pkl                  # Pickled ML model
+├── vectorizer.pkl                  # Persistence for vectorizer
+│
+├── requirements.txt                # Python dependency list
+├── Dockerfile                      # Docker configuration
+├── .gitignore                      # Git ignore file
+└── README.md                       # Project documentation
+```
 
+---
 
-🛠️ Technologies Used
-- Python 3.8+
-- TensorFlow / Keras: For deep learning models
-- scikit-learn: Classic ML and utilities
-- pandas / numpy: Data handling
-- NLTK / spaCy: NLP and preprocessing
-- Gmail API (Google APIs Client): Secure email fetching
-- pickle / joblib: Model serialization
-- Docker: (Optional) Containerized and cross-platform
+## 🛠️ Technologies Used
 
-🚀 Installation
-Clone the repository:
+| Category | Technologies |
+|----------|-------------|
+| **Language** | Python 3.8+ |
+| **Deep Learning** | TensorFlow, Keras |
+| **Machine Learning** | scikit-learn |
+| **Data Processing** | pandas, numpy |
+| **NLP** | NLTK, spaCy |
+| **API** | Gmail API (Google APIs Client) |
+| **Serialization** | pickle, joblib |
+| **Containerization** | Docker (Optional) |
+
+---
+
+## 🚀 Installation
+
+### Prerequisites
+
+- Python 3.8 or higher
+- pip package manager
+- Google Cloud account (for Gmail API)
+
+### Setup Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/gmail-spam-guard-pro.git
+   cd gmail-spam-guard-pro
+   ```
+
+2. **Create and activate virtual environment**
+   ```bash
+   # Create virtual environment
+   python -m venv venv
+   
+   # Activate (Linux/Mac)
+   source venv/bin/activate
+   
+   # Activate (Windows)
+   venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+## ⚙️ Configuration
+
+### Gmail API Setup
+
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Enable the **Gmail API** for your project
+4. Create **OAuth2 credentials** (Desktop application type)
+5. Download the credentials and save as `credentials.json` in the project root
+6. Run the authentication script:
+   ```bash
+   python gmail_auth.py
+   ```
+7. Complete the OAuth consent flow in your browser
+8. A `token.json` file will be automatically created
+
+> ⚠️ **Security Note**: Never commit `credentials.json` or `token.json` to version control!
+
+---
+
+## 💻 Usage
+
+### 1. Training Your Model
+
+Train the spam detection model on your dataset:
 
 ```bash
-git clone https://github.com/yourusername/gmail-spam-guard-pro.git
-cd gmail-spam-guard-pro
-
-
-Create and activate a virtual environment:
-
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-
-Install dependencies:
-
-pip install -r requirements.txt
-
-
-⚙️ Configuration
-Gmail API Setup
-
-Go to the Google Cloud Console
-
-Start a new project or select one
-
-Enable Gmail API
-
-Create OAuth2 credentials (Desktop app)
-
-Download and save as credentials.json in your project root
-
-Authenticate by running:
-
-python gmail_auth.py
-
-
-Complete consent in your browser. token.json will be created
-
-💻 Usage
-
-Training Your Model
-
 python train_model.py
+```
 
+This script will:
+- Load `spamhamdata.csv`
+- Preprocess the text data
+- Train and evaluate the model
+- Save the trained model (`spam_model.pkl`, `spam_detector.h5`)
+- Save the vectorizer (`vectorizer.pkl`)
 
-Loads spamhamdata.csv
+### 2. Preprocessing Data
 
-Preprocesses text
+Prepare and clean your spam dataset:
 
-Trains and saves a model (spam_model.pkl, spam_detector.h5)
-
-Saves the vectorizer: vectorizer.pkl
-
-Preprocessing Data
-
+```bash
 python preprocess_spam_data.py
+```
 
+### 3. Fetch and Classify Gmail Emails
 
-Fetch and Classify Live Gmail Emails
+Automatically fetch and classify emails from your Gmail inbox:
 
+```bash
 python read_gmail_and_detect_spam.py
+```
 
+This will:
+- Authenticate with the Gmail API
+- Download emails from your inbox
+- Predict spam/ham for each message
+- Save results to `Emails.csv`
 
-Authenticates with Gmail API
+### 4. Predict Individual Emails
 
-Downloads inbox emails
+Run predictions on custom text:
 
-Predicts spam/not spam for each
-
-Saves results in Emails.csv
-
-Predict with the Trained Model
-
+```bash
 python predict_spam.py
+```
 
+Or use programmatically:
 
-Or programmatically:
-
+```python
 from predict_spam import predict_spam
-result = predict_spam("Example email text")
-print(result)
 
+result = predict_spam("Congratulations! You've won a million dollars!")
+print(result)  # Output: spam
+```
 
-Generate Your Own Dataset
+### 5. Generate Custom Datasets
 
+Create your own training dataset:
+
+```bash
 python generate_dataset.py
+```
 
+---
 
-📝 Data Formats
+## 📝 Data Formats
 
-Train Data: spamhamdata.csv
+### Training Data (`spamhamdata.csv`)
 
+```csv
 label,text
-spam,"Win a million now!"
-ham,"Let's catch up next week."
+spam,"Win a million dollars now! Click here!"
+ham,"Hi, let's catch up next week for coffee."
+spam,"URGENT: Your account has been suspended"
+ham,"Meeting notes attached from today's standup"
+```
 
+### Classified Gmail Data (`Emails.csv`)
 
-Classified Gmail Data: Emails.csv
-
+```csv
 subject,sender,body,prediction,confidence
-"You've won!","spam@scam.com","Click to claim",spam,0.98
-"Status Update","teammate@company.com","Details attached",ham,0.94
+"You've won!","spam@scam.com","Click to claim your prize",spam,0.98
+"Weekly Update","teammate@company.com","Project status attached",ham,0.94
+"Verify Account","phish@fake.com","Confirm your details now",spam,0.96
+```
 
+---
 
-🐳 Docker Deployment
-Build the Docker image:
+## 🐳 Docker Deployment
 
+### Build the Docker Image
+
+```bash
 docker build -t gmail-spam-guard-pro .
+```
 
+### Run in Docker
 
-Run in Docker:
-
+```bash
 docker run -it gmail-spam-guard-pro python read_gmail_and_detect_spam.py
+```
 
+---
 
-📊 Typical Model Metrics
+## 📊 Model Performance
 
-Accuracy: 95-98%
+Typical metrics achieved with Gmail Spam Guard Pro:
 
-Precision: High (minimize false positives)
+| Metric | Score |
+|--------|-------|
+| **Accuracy** | 95-98% |
+| **Precision** | High (minimizes false positives) |
+| **Recall** | High (catches all spam) |
+| **F1 Score** | Balanced and reliable |
 
-Recall: High (catch all spam)
+---
 
-F1 Score: Balanced and reliable
+## 🤝 Contributing
 
-🤝 Contributing
-Contributions, bug reports, and suggestions are welcome!
+Contributions, bug reports, and feature suggestions are welcome!
 
-Fork this repository
+### How to Contribute
 
-Create a feature branch (git checkout -b feature/new-idea)
+1. **Fork** this repository
+2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **Make** your changes and test thoroughly
+4. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+5. **Push** to the branch (`git push origin feature/amazing-feature`)
+6. **Open** a Pull Request
 
-Make your change(s), test well
+### Contribution Ideas
 
-Commit (git commit -m 'My new idea')
+- 🎯 Improve spam/ham classification accuracy
+- 🌍 Expand to multiple languages
+- 🎣 Add phishing/scam detection
+- 📊 Build more dataset generation tools
+- 🔍 Add model explainability (LIME/SHAP)
+- 🖥️ Create a web dashboard UI
+- 📱 Mobile app integration
 
-Push (git push origin feature/new-idea)
+---
 
-Open a Pull Request
+## 📄 License
 
-Direct Contribution Ideas:
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-Improve spam/ham classification accuracy
+---
 
-Expand to multiple languages
+## 👤 Author
 
-Add phishing/scam detection
+**Karthikeya Boddeda**
 
-Build more dataset tools
+- 📧 Email: sunny.penny041@gmail.com
+- 💻 GitHub: [@yourusername](https://github.com/BVPKARTHIKEYA)
 
-Add explainability (LIME/SHAP)
+---
 
-UI/Web dashboard (future)
+## 🙏 Acknowledgments
 
-📄 License
-MIT License. See the LICENSE file for details.
+- Google/Gmail API [documentation](https://developers.google.com/gmail/api)
+- TensorFlow and scikit-learn communities
+- Open-source contributors and dataset creators
+- The amazing Python community
 
-👤 Author
-Karthikeya Boddeda
-Email: sunny.penny041@gmail.com
+---
 
-GitHub: @yourusername
+## ⚠️ Important Notes
 
-🙏 Acknowledgments
+- 🔐 **Never commit** `credentials.json`, `token.json`, or actual inbox data to version control
+- 📊 Respect Gmail's API rate limits and privacy guidelines
+- 💾 All data remains local unless you explicitly modify the code
+- 🔒 This tool processes emails locally for maximum privacy
 
-Google/Gmail API documentation
+---
 
-TensorFlow, scikit-learn, and open-source contributors
+## 🌟 Support
 
-Community dataset creators
+If Gmail Spam Guard Pro helped protect your inbox, please consider:
 
-⚠️ Notes
+- ⭐ Starring this repository
+- 🐛 Reporting bugs or issues
+- 💡 Suggesting new features
+- 🤝 Contributing code improvements
 
-Never commit your credentials.json, token.json, or actual inbox data
+---
 
-Respect Gmail's rate limits and privacy guidelines
+<div align="center">
 
-All data remains local unless you change the code
+**Made with ❤️ by Karthikeya Boddeda**
 
-⭐ If Gmail Spam Guard Pro helped protect your inbox, please star this repository!
-# Live Demo
-
-![a7dc645d-fcf8-4277-8214-14098a05872d](https://github.com/user-attachments/assets/d1464df9-d643-4002-8f1a-808ec0c9b708)
+</div>
